@@ -2,7 +2,7 @@ plugins {
     id 'java'
 }
 
-group 'net.gudenau'
+group 'net.gudenau.usbcap'
 version '0.0.1'
 
 dependencies {
@@ -11,12 +11,15 @@ dependencies {
 
 allprojects {
     apply plugin: 'java'
+    apply plugin: 'maven-publish'
 
     repositories {
         mavenCentral()
     }
 
     java{
+        withJavadocJar()
+
         toolchain {
             languageVersion = JavaLanguageVersion.of(16)
         }
@@ -27,6 +30,25 @@ allprojects {
     tasks.named('compileJava'){
         options.javaModuleVersion = provider{ project.version }
     }
+
+    publishing {
+        publications {
+            mavenJava(MavenPublication) {
+                groupId rootProject.group
+                version rootProject.version
+
+                from components.java
+            }
+        }
+
+        repositories {
+            maven {
+                name = 'gudMaven'
+                url = 'file://' + System.getProperty('user.home') + '/maven'
+            }
+        }
+    }
+
 }
 
 subprojects {
