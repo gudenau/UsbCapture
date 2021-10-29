@@ -94,7 +94,7 @@ try(
 ```
 ---
 
-###Saving captures for later
+### Saving captures for later
 
 This library has a very basic method of saving captured packets to disk to process later.
 
@@ -132,7 +132,7 @@ try(var device = new FileCaptureDevice(Path.of(".", "capture.bin"))){
 
 ---
 
-###Networking
+### Networking
 
 This library has a very basic form of networking to allow for the capture of packets on one machine and processing of
 them on a different machine. 
@@ -176,7 +176,7 @@ try(
 
 ---
 
-###Implementing a driver
+### Implementing a driver
 
 Implementing a driver is fairly straightforward. You create a class that implements `CaptureDriver` and declared it in
 your `module-info`.
