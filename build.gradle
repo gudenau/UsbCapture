@@ -1,0 +1,40 @@
+plugins {
+    id 'java'
+}
+
+group 'net.gudenau'
+version '0.0.1'
+
+dependencies {
+    implementation 'org.jetbrains:annotations:22.0.0'
+}
+
+allprojects {
+    apply plugin: 'java'
+
+    repositories {
+        mavenCentral()
+    }
+
+    java{
+        toolchain {
+            languageVersion = JavaLanguageVersion.of(16)
+        }
+
+        modularity.inferModulePath = true
+    }
+
+    tasks.named('compileJava'){
+        options.javaModuleVersion = provider{ project.version }
+    }
+}
+
+subprojects {
+    version = rootProject.version
+    group = rootProject.group
+
+    dependencies {
+        implementation(rootProject)
+        implementation 'org.jetbrains:annotations:22.0.0'
+    }
+}

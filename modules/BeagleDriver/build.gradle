@@ -1,0 +1,10 @@
+repositories {
+    maven {
+        name = 'gudenau\'s Maven'
+        url = 'https://maven.gudenau.net/'
+    }
+}
+
+dependencies {
+    implementation 'com.totalphase:BeagleAPI:5.40'
+}

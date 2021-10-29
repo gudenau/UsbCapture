@@ -1,0 +1,4 @@
+rootProject.name = 'UsbCapture'
+
+include('BeagleDriver')
+project(':BeagleDriver').projectDir = file("modules/BeagleDriver")
